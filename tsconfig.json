@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "allowImportingTsExtensions": true,
     "paths": {
       "@/*": [
         "./src/*"
@@ -11,6 +12,7 @@
       ]
     }
   },
+  "exclude": ["server", "tests", "scripts"],
   "include": [
     "**/*.ts",
     "**/*.tsx",

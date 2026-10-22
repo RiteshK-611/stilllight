@@ -1,32 +1,21 @@
 import { NativeTabs } from 'expo-router/native-tabs';
-import { useColorScheme } from 'react-native';
-
-import { Colors } from '@/constants/theme';
+import { useTheme } from '@/theme/theme';
 
 export default function AppTabs() {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme === 'dark' ? 'dark' : 'light'];
-
-  return (
-    <NativeTabs
-      backgroundColor={colors.background}
-      indicatorColor={colors.backgroundElement}
-      labelStyle={{ selected: { color: colors.text } }}>
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/home.png')}
-          renderingMode="template"
-        />
+  const { colors } = useTheme();
+  return <NativeTabs backgroundColor={colors.background} tintColor={colors.accent} indicatorColor={colors.accentSoft}
+      labelStyle={{ default: { color: colors.muted, fontSize: 11 }, selected: { color: colors.accent } }}>
+      <NativeTabs.Trigger name="index" accessibilityLabel="Studio">
+        <NativeTabs.Trigger.Label>Studio</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="sun.max" md="light_mode" />
       </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="explore">
-        <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
+      <NativeTabs.Trigger name="collection" accessibilityLabel="Collection">
+        <NativeTabs.Trigger.Label>Collection</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="square.grid.2x2" md="grid_view" />
       </NativeTabs.Trigger>
-    </NativeTabs>
-  );
+      <NativeTabs.Trigger name="settings" accessibilityLabel="Settings">
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="slider.horizontal.3" md="tune" />
+      </NativeTabs.Trigger>
+    </NativeTabs>;
 }

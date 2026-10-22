@@ -1,36 +1,42 @@
 {
   "expo": {
-    "name": "stilllight",
+    "name": "Stilllight",
     "slug": "stilllight",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/stilllight-icon.png",
     "scheme": "stilllight",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "bundleIdentifier": "com.stilllight.beta",
+      "supportsTablet": true,
+      "infoPlist": { "CADisableMinimumFrameDurationOnPhone": true }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundColor": "#F6F2EA",
+        "foregroundImage": "./assets/images/stilllight-icon.png"
       },
-      "predictiveBackGestureEnabled": false
+      "package": "com.stilllight.beta",
+      "predictiveBackGestureEnabled": true,
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
-      "output": "server",
-      "favicon": "./assets/images/favicon.png"
+      "output": "single",
+      "favicon": "./assets/images/stilllight-favicon.png"
     },
     "plugins": [
       "expo-router",
+      ["expo-image-picker", { "photosPermission": "Choose a photo to edit in Stilllight.", "cameraPermission": "Take a photo to edit in Stilllight.", "microphonePermission": false }],
+      ["expo-media-library", { "photosPermission": "Choose and save your Stilllight photos.", "savePhotosPermission": "Save your edited photo to your library.", "granularPermissions": ["photo"], "isAccessMediaLocationEnabled": false }],
+      "expo-secure-store",
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "backgroundColor": "#F8F5EF",
+          "image": "./assets/images/stilllight-icon.png",
+          "imageWidth": 100,
+          "dark": { "backgroundColor": "#191A17", "image": "./assets/images/stilllight-icon.png" }
         }
       ]
     ],
